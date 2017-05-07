@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>Train Schedule</title>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Christian Montoya">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<section>
+		<header>
+			<img src="images/amtrak-logo.png" alt="Amtrak logo">
+			<h1>Train Schedule</h1>
+			<p>U.S. Routes</p>
+		</header>
+			
+		<article>
+			<h2>Daily Train Schedule</h2>
+			<table id="trainSchedule">
+				<tr>
+					<th>Train Name</th>
+					<th>Destination</th>
+					<th>Frequency</th>
+					<th>Next Arrival</th>
+					<th>Time to Arrival</th>
+				</tr>
+				<!-- <tr>
+					INFUSED DATA FROM DATABASE
+				</tr> -->
+	  		</table>
+		</article>
+			
+		<article>
+			<h2>Add Train - Conductor Console</h2>
+			<form>
+				<div>
+					<label for="trainName">Train Name:</label>
+			    	<input type="text" id="trainName" placeholder="California Zephyr">
+			    	<label for="destination">Destination:</label>
+			    	<input type="text" id="destination" placeholder="Chicago">
+			    	<label for="time">First Train Time:</label>
+			    	<input type="text" id="time" placeholder="14:00 (military time)">
+			    	<label for="frequency">Frequency (min):</label>
+			    	<input type="text" id="frequency" placeholder="30">
+			  		<button type="submit" id="submit">Add</button>
+		  		</div>
+			</form>
+		</article>		
+	</section>
+</body>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Firebase -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<!-- Link to Moment.js should go here -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+	<!-- Our script -->
+	<script src="script.js"></script>
+</html>

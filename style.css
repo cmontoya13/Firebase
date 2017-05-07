@@ -1,0 +1,96 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0 auto;
+	font-family: sans-serif;
+	min-width: 350px;
+}
+section {
+	display: block;
+	margin: 0 auto;
+	width: 80%;
+}
+header {
+	background-image: url("images/train.png");
+	background-repeat: no-repeat;
+	border: solid 1px steelblue;
+	background-color: #999;
+	border-radius: 5px;
+	height: 150px;
+	margin: 10px;
+	text-align: center;
+}
+img {
+	float: right;
+	display: relative;
+	margin: 10px 10px 0 -100px;
+	width: 100px;
+}
+article {
+	display: block;
+	border: solid 1px steelblue;
+	border-radius: 5px;
+	min-height: 100px;
+	margin: 10px;
+}
+p:first-of-type {
+	color: white;
+	margin: 0;
+	padding: 0;
+	font-size: 0.9em;
+}
+p {
+	color:white;
+}
+h1, h2 {
+	color: white;
+}
+h1 {
+	font-size: 1.9em;
+	margin: 50px 0 0;
+	text-shadow: 2px 2px 4px black;
+}
+h2 {
+	background-color: steelblue;
+	margin-top: 0;
+	font-size: 0.9em;
+	padding: 5px;
+}
+table {
+	width: 100%;
+	text-align: left;
+	margin: 0 10px;
+}
+form {
+	width: 100%;
+	text-align: left;
+	padding:  0 0 10px;
+}
+form div {
+	margin: 0 15px 10px 10px;
+}
+label {
+	font-weight: bold;
+}
+input {
+	width: 100%;
+	margin-bottom: 10px;
+}
+button {
+	background-color: steelblue;
+	color: white;
+	padding: 5px 10px;
+	border: solid 1px steelblue;
+	border-radius: 5px;
+}
+th, td, label, input {
+	font-size: 0.8em;
+}
+@media (max-width: 600px) {
+	section {
+		width: 100%;
+	}
+}
