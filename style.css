@@ -6,7 +6,7 @@ html, body {
 body {
 	margin: 0 auto;
 	font-family: sans-serif;
-	min-width: 350px;
+	min-width: 500px;
 }
 section {
 	display: block;
