@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database(),
 
 // Initial variables
+name = "",
 trainName = "",
 destination = "",
 time = "",
@@ -21,7 +22,10 @@ minutesAway = "";
 
 $("#submit").on("click", function(event) {
   event.preventDefault();
+  computeValues();
+});
 
+	function computeValues() {
 	// Capture values from text boxes
 	trainName = $("#trainName").val().trim();
 	destination = $("#destination").val().trim();
@@ -102,15 +106,50 @@ $("#submit").on("click", function(event) {
 
 	// Push to database
 	database.ref().push({
-	trainName: trainName,
-	destination: destination,
-	frequency: frequency,
-	nextTrain: nextTrain,
-	minutesAway: minutesAway
+		trainName: trainName,
+		destination: destination,
+		frequency: frequency,
+		nextTrain: nextTrain,
+		minutesAway: minutesAway
+	});
+} // end of computeValues function
+
+// Revise existing content with new data
+$("#revise").on("click", function(event) {
+	trainName = $("#trainName").val().trim(); // capture train name entered value
+  	var ref = firebase.database().ref().orderByKey();
+	ref.once("value").then(function(snapshot) {
+	    snapshot.forEach(function(childSnapshot) {
+	    	var childData = childSnapshot.val().trainName; // capture train name database values
+			if (trainName === childData) { // entered name value matches database value
+				childSnapshot.ref.remove(); // remove the entire object
+				computeValues(); // run function to create new data
+			}
+	  	});
 	});
 });
 
-// Process snapshot values
+// Delete a single object from the database based on train name
+$("#delete").on("click", function(event) {
+  	trainName = $("#trainName").val().trim(); // capture train name entered value
+   	var ref = firebase.database().ref().orderByKey();
+	ref.once("value").then(function(snapshot) {
+	    snapshot.forEach(function(childSnapshot) {
+	     	var childData = childSnapshot.val().trainName; // capture train name database values
+			if (trainName === childData) { // entered name value matches database value
+				childSnapshot.ref.remove(); // remove the entire object
+			}
+	  	});
+	});
+});
+
+// Clear database completely
+$("#clear").on("click", function(event) {
+	var rootRef = firebase.database().ref(); // capture the database root
+	rootRef.remove(); // remove all database contents
+});
+
+// Display current values (requires 'type="submit"' on html buttons for real time updating)
 database.ref().on("child_added", function(childSnapshot) {
 	//Append lastest results
 	$("#trainSchedule").append("<tr>" +
@@ -121,6 +160,7 @@ database.ref().on("child_added", function(childSnapshot) {
 	"<td>" + childSnapshot.val().minutesAway + "</td>" +
 	"</tr>"
 	);
+
 	// clear variables
 	nextTrain = "";
 	minutesAway = "";
